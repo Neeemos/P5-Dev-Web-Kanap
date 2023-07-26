@@ -7,7 +7,7 @@ const url = new URL(currentUrl);
 // Récupérer l'ID du produit depuis l'URL
 const idParam = url.searchParams.get("id");
 const itemsSection = document.getElementsByClassName("item__img")[0];
-const image = document.createElement('img');
+const image = document.createElement("img");
 // Effectuer une requête GET vers l'API pour récupérer les informations du produit
 fetch(`http://localhost:3000/api/products/${idParam}/`)
   .then((response) => response.json())
@@ -15,6 +15,7 @@ fetch(`http://localhost:3000/api/products/${idParam}/`)
     // Afficher les informations dans le HTML
     document.title = kanap.name;
     document.getElementById("title").innerText = kanap.name;
+    document.title = kanap.name;
     document.getElementById("price").innerText = kanap.price;
     document.getElementById("description").innerText = kanap.description;
     image.src = kanap.imageUrl;
@@ -34,6 +35,7 @@ fetch(`http://localhost:3000/api/products/${idParam}/`)
       "Une erreur s'est produite lors de la récupération des informations du produit : " +
         error
     );
+    addToCartButton.style.display = "none";
   });
 
 // Récupérer le bouton "Ajouter au panier"
